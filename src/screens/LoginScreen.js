@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { signInWithPhoneNumber } from 'firebase/auth';
-import { auth } from '../services/firebase';
+import { firebaseAuth } from '../services/firebase';
 
 export default function LoginScreen() {
   const [phone, setPhone] = useState('');
@@ -10,7 +9,7 @@ export default function LoginScreen() {
 
   const signIn = async () => {
     try {
-      const confirmationResult = await signInWithPhoneNumber(auth, phone);
+      const confirmationResult = await firebaseAuth.signInWithPhoneNumber(phone);
       setConfirmation(confirmationResult);
       Alert.alert('Успех', 'Код отправлен на ваш телефон');
     } catch (error) {

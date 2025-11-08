@@ -1,10 +1,7 @@
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
-// Firebase будет инициализирован нативно
-// так что нам не нужен firebaseConfig здесь
-
-const auth = getAuth();
-const firestore = getFirestore();
-
-export { auth, firestore };
+// Экспортируем готовые инстансы auth и firestore
+// Инициализация происходит нативно
+export const firebaseAuth = auth();
+export const firestoreDB = firestore();
