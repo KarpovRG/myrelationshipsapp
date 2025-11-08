@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { signIn, signUp } from '../services/auth';
 
 const LoginScreen = () => {
@@ -23,25 +24,61 @@ const LoginScreen = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <input
-        type="email"
+    <View style={styles.container}>
+      <Text style={styles.title}>Login or Sign Up</Text>
+      <TextInput
+        style={styles.input}
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
       />
-      <input
-        type="password"
+      <TextInput
+        style={styles.input}
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChangeText={setPassword}
+        secureTextEntry
       />
-      <button onClick={handleSignIn}>Sign In</button>
-      <button onClick={handleSignUp}>Sign Up</button>
-      {error && <p>{error}</p>}
-    </div>
+      <View style={styles.buttonContainer}>
+        <Button title="Sign In" onPress={handleSignIn} />
+        <Button title="Sign Up" onPress={handleSignUp} />
+      </View>
+      {error && <Text style={styles.error}>{error}</Text>}
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 24,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 12,
+    paddingHorizontal: 8,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 12,
+  },
+  error: {
+    color: 'red',
+    marginTop: 12,
+    textAlign: 'center',
+  },
+});
 
 export default LoginScreen;
