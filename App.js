@@ -1,31 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import { onAuthStateChanged } from './src/services/auth';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './src/services/firebase';
 import LoginScreen from './src/screens/LoginScreen';
 import ContactsScreen from './src/screens/ContactsScreen';
+import AnalyticsScreen from './src/screens/AnalyticsScreen';
 
-const App = () => {
+const Stack = createNativeStackNavigator();
+
+export default function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(user => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setLoading(false);
     });
-    return () => unsubscribe();
+    return unsubscribe;
   }, []);
 
+  if (loading) {
+    return null; // Или компонент загрузки
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      {user ? <ContactsScreen /> : <LoginScreen />}
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {!user ? (
+          <Stack.Screen name="Login" component={LoginScreen} />
+        ) : (
+          <>
+            <Stack.Screen name="Contacts" component={ContactsScreen} />
+            <Stack.Screen name="Analytics" component={AnalyticsScreen} />
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;
+}

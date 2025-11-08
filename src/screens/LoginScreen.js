@@ -1,84 +1,90 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { signIn, signUp } from '../services/auth';
+import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { signInWithPhoneNumber } from 'firebase/auth';
+import { auth } from '../services/firebase';
 
-const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+export default function LoginScreen() {
+  const [phone, setPhone] = useState('');
+  const [code, setCode] = useState('');
+  const [confirmation, setConfirmation] = useState(null);
 
-  const handleSignIn = async () => {
+  const signIn = async () => {
     try {
-      await signIn(email, password);
+      const confirmationResult = await signInWithPhoneNumber(auth, phone);
+      setConfirmation(confirmationResult);
+      Alert.alert('Успех', 'Код отправлен на ваш телефон');
     } catch (error) {
-      setError(error.message);
+      Alert.alert('Ошибка', error.message);
     }
   };
 
-  const handleSignUp = async () => {
+  const confirmCode = async () => {
     try {
-      await signUp(email, password);
+      await confirmation.confirm(code);
     } catch (error) {
-      setError(error.message);
+      Alert.alert('Ошибка', 'Неверный код');
     }
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login or Sign Up</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <View style={styles.buttonContainer}>
-        <Button title="Sign In" onPress={handleSignIn} />
-        <Button title="Sign Up" onPress={handleSignUp} />
-      </View>
-      {error && <Text style={styles.error}>{error}</Text>}
+    <View style={{ flex: 1, padding: 20, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 24, marginBottom: 20, textAlign: 'center' }}>
+        Мои Взаимоотношения
+      </Text>
+      
+      {!confirmation ? (
+        <>
+          <TextInput
+            placeholder="+7 (XXX) XXX-XX-XX"
+            value={phone}
+            onChangeText={setPhone}
+            style={{
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 15,
+              marginBottom: 10,
+              borderRadius: 8
+            }}
+          />
+          <TouchableOpacity
+            onPress={signIn}
+            style={{
+              backgroundColor: '#007AFF',
+              padding: 15,
+              borderRadius: 8,
+              alignItems: 'center'
+            }}
+          >
+            <Text style={{ color: 'white', fontSize: 16 }}>Получить код</Text>
+          </TouchableOpacity>
+        </>
+      ) : (
+        <>
+          <TextInput
+            placeholder="Введите код из SMS"
+            value={code}
+            onChangeText={setCode}
+            style={{
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 15,
+              marginBottom: 10,
+              borderRadius: 8
+            }}
+          />
+          <TouchableOpacity
+            onPress={confirmCode}
+            style={{
+              backgroundColor: '#007AFF',
+              padding: 15,
+              borderRadius: 8,
+              alignItems: 'center'
+            }}
+          >
+            <Text style={{ color: 'white', fontSize: 16 }}>Войти</Text>
+          </TouchableOpacity>
+        </>
+      )}
     </View>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 24,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 8,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 12,
-  },
-  error: {
-    color: 'red',
-    marginTop: 12,
-    textAlign: 'center',
-  },
-});
-
-export default LoginScreen;
+}
