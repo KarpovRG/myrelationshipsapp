@@ -12,9 +12,6 @@ yarn-error.log
 /android/app/src/main/res/drawable-*
 /android/app/src/main/res/raw/
 
-# iOS
-/ios/build/
-
 # IDE files
 .idea/
 .vscode/
