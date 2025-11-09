@@ -1,0 +1,4 @@
+/home/user/myrelationshipsapp/android/app/.cxx/Debug/5a5s70c2/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
+/home/user/myrelationshipsapp/android/app/.cxx/Debug/5a5s70c2/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
+/home/user/myrelationshipsapp/android/app/.cxx/Debug/5a5s70c2/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
+/home/user/myrelationshipsapp/android/app/.cxx/Debug/5a5s70c2/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir

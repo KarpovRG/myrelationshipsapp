@@ -1,0 +1,1 @@
+/home/user/myrelationshipsapp/android/app/build/intermediates/cxx/Debug/5a5s70c2/obj/x86_64

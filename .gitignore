@@ -1,3 +1,27 @@
+# Node
+/node_modules/
+npm-debug.log
+yarn-error.log
 
-# Firebase config
-.env
+# Android
+/android/app/build/
+/android/build/
+/android/.gradle/
+/android/gradle/
+/android/app/src/main/assets/index.android.bundle
+/android/app/src/main/res/drawable-*
+/android/app/src/main/res/raw/
+
+# iOS
+/ios/build/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Metro bundler
+.metro-cache/
+
+# Others
+*.lock

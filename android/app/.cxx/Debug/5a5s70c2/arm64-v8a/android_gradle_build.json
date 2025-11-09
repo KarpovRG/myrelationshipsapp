@@ -1,0 +1,68 @@
+{
+  "buildFiles": [
+    "/home/user/myrelationshipsapp/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt",
+    "/home/user/myrelationshipsapp/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt",
+    "/home/user/myrelationshipsapp/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/user/.androidsdkroot/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/user/myrelationshipsapp/android/app/.cxx/Debug/5a5s70c2/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/user/.androidsdkroot/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/user/myrelationshipsapp/android/app/.cxx/Debug/5a5s70c2/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "appmodules::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "appmodules",
+      "output": "/home/user/myrelationshipsapp/android/app/build/intermediates/cxx/Debug/5a5s70c2/obj/arm64-v8a/libappmodules.so",
+      "runtimeFiles": [
+        "/home/user/myrelationshipsapp/android/app/build/intermediates/cxx/Debug/5a5s70c2/obj/arm64-v8a/libreact_codegen_safeareacontext.so",
+        "/home/user/myrelationshipsapp/android/app/build/intermediates/cxx/Debug/5a5s70c2/obj/arm64-v8a/libreact_codegen_rnscreens.so",
+        "/home/user/.gradle/caches/8.13/transforms/47705a718061e06f51f6c8935c92cfd2/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.arm64-v8a/libfbjni.so",
+        "/home/user/.gradle/caches/8.13/transforms/1200775f720fc87973c9ad4081465bd8/transformed/react-android-0.82.1-debug/prefab/modules/jsi/libs/android.arm64-v8a/libjsi.so",
+        "/home/user/.gradle/caches/8.13/transforms/1200775f720fc87973c9ad4081465bd8/transformed/react-android-0.82.1-debug/prefab/modules/reactnative/libs/android.arm64-v8a/libreactnative.so"
+      ]
+    },
+    "react_codegen_rnscreens::@25bcbd507e98d3a854ad": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "react_codegen_rnscreens",
+      "output": "/home/user/myrelationshipsapp/android/app/build/intermediates/cxx/Debug/5a5s70c2/obj/arm64-v8a/libreact_codegen_rnscreens.so",
+      "runtimeFiles": [
+        "/home/user/.gradle/caches/8.13/transforms/1200775f720fc87973c9ad4081465bd8/transformed/react-android-0.82.1-debug/prefab/modules/reactnative/libs/android.arm64-v8a/libreactnative.so",
+        "/home/user/.gradle/caches/8.13/transforms/1200775f720fc87973c9ad4081465bd8/transformed/react-android-0.82.1-debug/prefab/modules/jsi/libs/android.arm64-v8a/libjsi.so",
+        "/home/user/.gradle/caches/8.13/transforms/47705a718061e06f51f6c8935c92cfd2/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.arm64-v8a/libfbjni.so"
+      ]
+    },
+    "react_codegen_safeareacontext::@7984cd80db47aa7b952a": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "react_codegen_safeareacontext",
+      "output": "/home/user/myrelationshipsapp/android/app/build/intermediates/cxx/Debug/5a5s70c2/obj/arm64-v8a/libreact_codegen_safeareacontext.so",
+      "runtimeFiles": [
+        "/home/user/.gradle/caches/8.13/transforms/47705a718061e06f51f6c8935c92cfd2/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.arm64-v8a/libfbjni.so",
+        "/home/user/.gradle/caches/8.13/transforms/1200775f720fc87973c9ad4081465bd8/transformed/react-android-0.82.1-debug/prefab/modules/jsi/libs/android.arm64-v8a/libjsi.so",
+        "/home/user/.gradle/caches/8.13/transforms/1200775f720fc87973c9ad4081465bd8/transformed/react-android-0.82.1-debug/prefab/modules/reactnative/libs/android.arm64-v8a/libreactnative.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/user/.androidsdkroot/ndk/27.1.12297006/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/home/user/.androidsdkroot/ndk/27.1.12297006/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
